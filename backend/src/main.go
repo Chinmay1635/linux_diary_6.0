@@ -41,18 +41,18 @@ func main() {
 	}).Methods("GET")
 
 	muxRouter.HandleFunc("/registration", func(w http.ResponseWriter, r *http.Request) {
-		response, _ := userService.CreateUser(context.Background(), r)
+		// response, _ := userService.CreateUser(context.Background(), r)
 
-		// response := map[string]interface{}{
-		// 	"success": true,
-		// 	"message": "Registrations are closed !",
-		// }
-		jsonResponse, _ := json.Marshal(response)
-		log.Println(response)
-		if !response.Success {
-			http.Error(w, string(jsonResponse), http.StatusBadRequest)
-			return
+		response := map[string]interface{}{
+			"success": true,
+			"message": "Registrations are closed !",
 		}
+		jsonResponse, _ := json.Marshal(response)
+		// log.Println(response)
+		// if !response.Success {
+		// 	http.Error(w, string(jsonResponse), http.StatusBadRequest)
+		// 	return
+		// }
 
 		// if err != nil {
 		// 	http.Error(w, err.Error(), http.StatusInternalServerError)
